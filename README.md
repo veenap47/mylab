@@ -2,9 +2,13 @@
 Hello! 👋 I'm a Data Engineer/Analyst with over 10 years of experience building data pipelines, performing advanced analytics, and crafting interactive dashboards. I specialize in turning complex data into actionable insights to support data-driven decision-making.
 
 Tech Stack: Python, SQL, R, SSIS, Tableau, MongoDB, and more.
+
 What I Do: I design ETL pipelines, analyze datasets, and create data visualization tools to empower businesses and teams.
+
 Interests: Passionate about leveraging data to solve real-world problems, automating workflows, and optimizing processes for efficiency.
+
 Current Focus: Exploring cloud platforms (AWS, Azure) and learning advanced ML techniques to enhance analytics.
+
 Feel free to explore my repositories, where I share projects on ETL automation, sentiment analysis, dashboards, and predictive modeling. Let's connect and collaborate! 
 
 
