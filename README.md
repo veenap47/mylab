@@ -1,26 +1,131 @@
-# 💫 About Me:
-Hello! 👋 I'm a Data Engineer/Analyst with over 10 years of experience building data pipelines, performing advanced analytics, and crafting interactive dashboards. I specialize in turning complex data into actionable insights to support data-driven decision-making.
+# WhatsApp Chat Analysis with Python
 
-**Tech Stack:** Python, SQL, R, SSIS, Tableau, MongoDB, and more.
-
-**What I Do**: I design ETL pipelines, analyze datasets, and create data visualization tools to empower businesses and teams.
-
-**Interests:** Passionate about leveraging data to solve real-world problems, automating workflows, and optimizing processes for efficiency.
-
-**Current Focus:** Exploring cloud platforms (AWS).
-
-Feel free to explore my repositories, where I share projects on ETL automation, sentiment analysis, dashboards, and predictive modeling. Let's connect and collaborate! 
-
-
-## 🌐 Socials:
-[![Facebook](https://img.shields.io/badge/Facebook-%231877F2.svg?logo=Facebook&logoColor=white)](https://facebook.com/https://www.facebook.com/veena.prabhakaran/) [![Instagram](https://img.shields.io/badge/Instagram-%23E4405F.svg?logo=Instagram&logoColor=white)](https://instagram.com/https://www.instagram.com/veena.prabhakaran/) [![LinkedIn](https://img.shields.io/badge/LinkedIn-%230077B5.svg?logo=linkedin&logoColor=white)](https://linkedin.com/in/https://www.linkedin.com/in/veenap47/) [![Medium](https://img.shields.io/badge/Medium-12100E?logo=medium&logoColor=white)](https://medium.com/@https://medium.com/@veenaprabhakaran) 
-
-# 💻 Tech Stack:
-![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54) ![R](https://img.shields.io/badge/r-%23276DC3.svg?style=for-the-badge&logo=r&logoColor=white) ![Anaconda](https://img.shields.io/badge/Anaconda-%2344A833.svg?style=for-the-badge&logo=anaconda&logoColor=white) ![MicrosoftSQLServer](https://img.shields.io/badge/Microsoft%20SQL%20Sever-CC2927?style=for-the-badge&logo=microsoft%20sql%20server&logoColor=white) ![MySQL](https://img.shields.io/badge/mysql-%2300f.svg?style=for-the-badge&logo=mysql&logoColor=white) ![Pandas](https://img.shields.io/badge/pandas-%23150458.svg?style=for-the-badge&logo=pandas&logoColor=white) ![NumPy](https://img.shields.io/badge/numpy-%23013243.svg?style=for-the-badge&logo=numpy&logoColor=white) ![Plotly](https://img.shields.io/badge/Plotly-%233F4F75.svg?style=for-the-badge&logo=plotly&logoColor=white) ![scikit-learn](https://img.shields.io/badge/scikit--learn-%23F7931E.svg?style=for-the-badge&logo=scikit-learn&logoColor=white) ![SciPy](https://img.shields.io/badge/SciPy-%230C55A5.svg?style=for-the-badge&logo=scipy&logoColor=%white) ![Jira](https://img.shields.io/badge/jira-%230A0FFF.svg?style=for-the-badge&logo=jira&logoColor=white)
-# 📊 GitHub Stats:
-![](https://github-readme-stats.vercel.app/api?username=veenap47&theme=dark&hide_border=true&include_all_commits=true&count_private=true)<br/>
-![](https://github-readme-streak-stats.herokuapp.com/?user=veenap47&theme=dark&hide_border=true)<br/>
-![](https://github-readme-stats.vercel.app/api/top-langs/?username=veenap47&theme=dark&hide_border=true&include_all_commits=true&count_private=true&layout=compact)
+This repository contains a Python script for analyzing and visualizing WhatsApp chat data. By parsing raw chat exports, the script provides insights into message trends, most active members, and frequently discussed topics.
 
 ---
-[![](https://visitcount.itsvg.in/api?id=veenap47&icon=0&color=0)](https://visitcount.itsvg.in)
+
+## Features
+
+- Parse and structure WhatsApp chat data into a DataFrame
+- Analyze message trends over time
+- Identify the most active members in the chat
+- Generate word clouds to visualize commonly used words
+- Visualize top activity days using bar charts
+- Perform exploratory data analysis (EDA) on group chats
+
+---
+
+## Prerequisites
+
+To run this project, ensure you have the following installed:
+
+- Python 3.x
+- Libraries: 
+  - `pandas`
+  - `numpy`
+  - `matplotlib`
+  - `seaborn`
+  - `wordcloud`
+  - `regex`
+
+Install the dependencies using pip:
+
+```bash
+pip install pandas numpy matplotlib seaborn wordcloud regex
+```
+
+---
+
+## How to Use
+
+1. **Export WhatsApp Chat**: Export the chat from WhatsApp (text format).
+2. **Place Chat File**: Save the chat file (e.g., `whatsapp_chat.txt`) in the `data/` folder.
+3. **Run the Script**:
+
+   ```bash
+   python chat_analysis.py
+   ```
+
+4. **View Outputs**:
+   - Line plot showing the number of messages over time
+   - Bar chart for the most active days
+   - Word cloud for the most common words
+   - Bar chart of the most active members
+
+---
+
+## Code Overview
+
+### 1. **Preprocessing the Chat Data**
+
+- **Date and Time Parsing**: Identify lines with timestamps to mark the start of a new message.
+- **Message Segmentation**: Extract the date, time, author, and message content.
+- **Text Cleaning**: Remove unwanted Unicode characters and filter out system messages.
+
+### 2. **Data Transformation**
+
+- Convert parsed data into a Pandas DataFrame with columns: `Date`, `Time`, `Author`, `Message`.
+- Group data by date for trend analysis.
+
+### 3. **Visualizations**
+
+- **Messages Over Time**: Line plot showing daily message counts.
+- **Most Active Days**: Bar chart highlighting top 10 activity days.
+- **Word Cloud**: Visualize common words in the chat.
+- **Top Contributors**: Bar chart of message counts per user.
+
+---
+
+## Example Visualizations
+
+### Number of Messages Over Time
+
+```python
+plt.plot(summary['Date'], summary['Message_Count'])
+plt.title('Number of Messages Over Time')
+plt.xlabel('Date')
+plt.ylabel('Number of Messages')
+plt.grid(True)
+plt.show()
+```
+
+### Word Cloud of Common Words
+
+```python
+wordcloud = WordCloud(width=800, height=400, background_color='white').generate(text)
+plt.imshow(wordcloud, interpolation='bilinear')
+plt.axis('off')
+plt.title('Most Common Words in Chat')
+plt.show()
+```
+
+### Most Active Members
+
+```python
+author_msgs = df['Author'].value_counts()
+sns.barplot(x=author_msgs.values, y=author_msgs.index)
+plt.title('Most Active Members in Group')
+plt.xlabel('Number of Messages')
+plt.ylabel('Author')
+plt.show()
+```
+
+---
+
+## Key Insights
+
+- **Message Trends**: Identify the most and least active days.
+- **Content Analysis**: Highlight frequently used words and topics.
+- **User Contribution**: Determine the most active participants in the group.
+
+---
+
+## Contributing
+
+Feel free to fork this repository and contribute by submitting pull requests. Suggestions for improvements or new features are always welcome!
+
+
+---
+
+
+Happy Analyzing! 🚀
