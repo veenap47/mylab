@@ -57,7 +57,6 @@ def split_data(line):
 
 
 data = []
-#chat = '/Users/veenap47/Downloads/wayfarer_chat.txt' -- to be removed
 chat = 'data/whatsapp_chat.txt'
 
 #Clean unicode characters
